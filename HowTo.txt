@@ -1,0 +1,65 @@
+How to compile with a picture embedded (This method doesn't work):
+
+1. Write a method like this one into the code:
+def resource_path(relative_path):
+""" Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
+
+2. call that function every time your reference the picture file in your code.
+
+3. Type this command:
+pyinstaller --onefile codefile.py
+
+#2. Write the following command to create the codefile.spec file
+#pyi-makespec codefile.py
+
+3. Open codefile.spec and paste this code into it:
+#Add the file like the below example
+a.datas += [('treepic.png', '/media/jared/Acer/Users/Jared/Desktop/Ubuntu_Overflow/ancestorCardsGUI/treepic.png', 'DATA')]
+pyz = PYZ(a.pure, a.zipped_data,
+     cipher=block_cipher)
+exe = EXE(pyz,
+          a.scripts,
+          exclude_binaries=True,
+          name='treepic',
+          debug=False,
+          strip=False,
+          upx=True,
+          #Turn the console option False if you don't want to see the console while executing the program.
+          console=False,
+          #Add an icon to the program.
+          icon='/media/jared/Acer/Users/Jared/Desktop/Ubuntu_Overflow/ancestorCardsGUI/treepic.png')
+
+4. Type this command:
+pyinstaller codefile.spec
+
+
+The real way to do it:
+1. Write this little program to convert .gif images into base64 encoded strings:
+import base64
+with open("MyPicture.gif", "rb") as image_file:
+    encoded_string = base64.b64encode(image_file.read())
+print(encoded_string)#print string to copy it (see step 2)
+
+2. Copy the output into a file called myImages.py, like this:
+imageString = b'R0lGODlhyADIAPcAAAA .....blah blah really long string.......'
+
+3. In the main code, import the image strings:
+from myimages import *
+
+4. Render the image, using either PhotoImage for tkinter stuff,
+
+pic=imageString
+render = PhotoImage(data=pic)
+
+  or by decoding it in this way for use with PIL:
+
+from PIL import Image
+from io import BytesIO
+import base64
+pic=imageString
+im = Image.open(BytesIO(base64.b64decode(pic)))
+
+5. Compile it with:
+pyinstaller --onefile codefile.py
