@@ -45,6 +45,7 @@ def _(string):
     return string
 
 def cont(string):
+    """ parse a GEDCOM line adding CONT and CONT tags if necessary """
     level = int(string[:1]) + 1
     lines = string.splitlines()
     res = list()
@@ -52,17 +53,20 @@ def cont(string):
     for line in lines:
         c_line = line
         to_conc = list()
-        while len(c_line.encode('utf-8')) > max_len:
+        while len(c_line.encode("utf-8")) > max_len:
             index = min(max_len, len(c_line) - 2)
-            while (len(c_line[:index].encode('utf-8')) > max_len or re.search(r'[ \t\v]', c_line[index - 1:index + 1])) and index > 1:
+            while (
+                len(c_line[:index].encode("utf-8")) > max_len
+                or re.search(r"[ \t\v]", c_line[index - 1 : index + 1])
+            ) and index > 1:
                 index -= 1
             to_conc.append(c_line[:index])
             c_line = c_line[index:]
             max_len = 248
         to_conc.append(c_line)
-        res.append(('\n%s CONC ' % level).join(to_conc))
+        res.append(("\n%s CONC " % level).join(to_conc))
         max_len = 248
-    return ('\n%s CONT ' % level).join(res)
+    return ("\n%s CONT " % level).join(res) + "\n"
 
 
 # FamilySearch session class
@@ -73,14 +77,18 @@ class Session:
         self.verbose = verbose
         self.logfile = logfile
         self.timeout = timeout
-        self.fid = self.lang = None
+        self.fid = self.lang = self.display_name = None
         self.counter = 0
         self.logged = self.login()
 
     # Write in logfile if verbose enabled
     def write_log(self, text):
+        """ write text in the log file """
+        log = "[%s]: %s\n" % (time.strftime("%Y-%m-%d %H:%M:%S"), text)
         if self.verbose:
-            self.logfile.write('[%s]: %s\n' % (time.strftime('%Y-%m-%d %H:%M:%S'), text))
+            sys.stderr.write(log)
+        if self.logfile:
+            self.logfile.write(log)
 
     # retrieve FamilySearch session ID (https://familysearch.org/developers/docs/guides/oauth2)
     def login(self):
@@ -133,28 +141,36 @@ class Session:
                 time.sleep(self.timeout)
                 continue
             self.write_log('FamilySearch session id: ' + self.fssessionid)
+            self.set_current()
             return True
 
     # retrieve JSON structure from FamilySearch URL
-    def get_url(self, url):
+    def get_url(self, url, headers=None):
+        """ retrieve JSON structure from a FamilySearch URL """
         self.counter += 1
+        if headers is None:
+            headers = {"Accept": "application/x-gedcomx-v1+json"}
         while True:
             try:
-                self.write_log('Downloading: ' + url)
-                # r = requests.get(url, cookies = { 's_vi': self.s_vi, 'fssessionid' : self.fssessionid }, timeout = self.timeout)
-                r = requests.get('https://familysearch.org' + url, cookies={'fssessionid': self.fssessionid}, timeout=self.timeout)
+                self.write_log("Downloading: " + url)
+                r = requests.get(
+                    "https://familysearch.org" + url,
+                    cookies={"fssessionid": self.fssessionid},
+                    timeout=self.timeout,
+                    headers=headers,
+                )
             except requests.exceptions.ReadTimeout:
-                self.write_log('Read timed out')
+                self.write_log("Read timed out")
                 continue
             except requests.exceptions.ConnectionError:
-                self.write_log('Connection aborted')
+                self.write_log("Connection aborted")
                 time.sleep(self.timeout)
                 continue
-            self.write_log('Status code: ' + str(r.status_code))
+            self.write_log("Status code: %s" % r.status_code)
             if r.status_code == 204:
                 return None
             if r.status_code in {404, 405, 410, 500}:
-                self.write_log('WARNING: ' + url)
+                self.write_log("WARNING: " + url)
                 return None
             if r.status_code == 401:
                 self.login()
@@ -162,32 +178,41 @@ class Session:
             try:
                 r.raise_for_status()
             except requests.exceptions.HTTPError:
-                self.write_log('HTTPError')
-
+                self.write_log("HTTPError")
+                if r.status_code == 403:
+                    if (
+                        "message" in r.json()["errors"][0]
+                        and r.json()["errors"][0]["message"] == "Unable to get ordinances."
+                    ):
+                        self.write_log(
+                            "Unable to get ordinances. "
+                            "Try with an LDS account or without option -c."
+                        )
+                        return "error"
+                    self.write_log(
+                        "WARNING: code 403 from %s %s"
+                        % (url, r.json()["errors"][0]["message"] or "")
+                    )
+                    return None
                 time.sleep(self.timeout)
                 continue
             try:
                 return r.json()
-            except:
-                self.write_log('WARNING: corrupted file from ' + url)
+            except Exception as e:
+                self.write_log("WARNING: corrupted file from %s, error: %s" % (url, e))
                 return None
 
     # retrieve FamilySearch current user ID
     def set_current(self):
-        url = '/platform/users/current.json'
+        """ retrieve FamilySearch current user ID, name and language """
+        url = "/platform/users/current"
         data = self.get_url(url)
         if data:
-            self.fid = data['users'][0]['personId']
-            self.lang = data['users'][0]['preferredLanguage']
-
-    def get_userid(self):
-        if not self.fid:
-            self.set_current()
-        return self.fid
+            self.fid = data["users"][0]["personId"]
+            self.lang = data["users"][0]["preferredLanguage"]
+            self.display_name = data["users"][0]["displayName"]
 
     def _(self, string):
-        if not self.lang:
-            self.set_current()
         return string
 
 
@@ -368,7 +393,7 @@ class Fam:
     def add_marriage(self, fid):
         if not self.fid:
             self.fid = fid
-            url = '/platform/tree/couple-relationships/%s.json' % self.fid
+            url = '/platform/tree/couple-relationships/%s' % self.fid
             data = self.tree.fs.get_url(url)
             if data:
                 if 'facts' in data['relationships'][0]:
@@ -390,51 +415,66 @@ class Fam:
 
 # family tree class
 class Tree:
+    """ family tree class
+        :param fs: a Session object
+    """
+
     def __init__(self, fs=None):
         self.fs = fs
         self.indi = dict()
         self.fam = dict()
         self.places = dict()
+        self.display_name = self.lang = None
+        if fs:
+            self.display_name = fs.display_name
 
     # add individuals to the family tree
     def add_indis(self, fids):
+        """ add individuals to the family tree
+            :param fids: an iterable of fid
+        """
+
         async def add_datas(loop, data):
             futures = set()
-            for person in data['persons']:
-                self.indi[person['id']] = Indi(person['id'], self)
-                futures.add(loop.run_in_executor(None, self.indi[person['id']].add_data, person))
+            for person in data["persons"]:
+                self.indi[person["id"]] = Indi(person["id"], self)
+                futures.add(loop.run_in_executor(None, self.indi[person["id"]].add_data, person))
             for future in futures:
                 await future
 
         new_fids = [fid for fid in fids if fid and fid not in self.indi]
         loop = asyncio.new_event_loop()
         asyncio.set_event_loop(loop)
-        # loop = asyncio.get_event_loop()
-        while len(new_fids):
-            data = self.fs.get_url('/platform/tree/persons.json?pids=' + ','.join(new_fids[:MAX_PERSONS]))
+        while new_fids:
+            data = self.fs.get_url(
+                "/platform/tree/persons?pids=" + ",".join(new_fids[:MAX_PERSONS])
+            )
             if data:
-                if 'places' in data:
-                    for place in data['places']:
-                        if place['id'] not in self.places:
-                            self.places[place['id']] = (str(place['latitude']), str(place['longitude']))
+                if "places" in data:
+                    for place in data["places"]:
+                        if place["id"] not in self.places:
+                            self.places[place["id"]] = (
+                                str(place["latitude"]),
+                                str(place["longitude"]),
+                            )
                 loop.run_until_complete(add_datas(loop, data))
-                if 'childAndParentsRelationships' in data:
-                    for rel in data['childAndParentsRelationships']:
-                        father = rel['father']['resourceId'] if 'father' in rel else None
-                        mother = rel['mother']['resourceId'] if 'mother' in rel else None
-                        child = rel['child']['resourceId'] if 'child' in rel else None
+                if "childAndParentsRelationships" in data:
+                    for rel in data["childAndParentsRelationships"]:
+                        father = rel["parent1"]["resourceId"] if "parent1" in rel else None
+                        mother = rel["parent2"]["resourceId"] if "parent2" in rel else None
+                        child = rel["child"]["resourceId"] if "child" in rel else None
                         if child in self.indi:
                             self.indi[child].parents.add((father, mother))
                         if father in self.indi:
                             self.indi[father].children.add((father, mother, child))
                         if mother in self.indi:
                             self.indi[mother].children.add((father, mother, child))
-                if 'relationships' in data:
-                    for rel in data['relationships']:
-                        if rel['type'] == u'http://gedcomx.org/Couple':
-                            person1 = rel['person1']['resourceId']
-                            person2 = rel['person2']['resourceId']
-                            relfid = rel['id']
+                if "relationships" in data:
+                    for rel in data["relationships"]:
+                        if rel["type"] == "http://gedcomx.org/Couple":
+                            person1 = rel["person1"]["resourceId"]
+                            person2 = rel["person2"]["resourceId"]
+                            relfid = rel["id"]
                             if person1 in self.indi:
                                 self.indi[person1].spouses.add((person1, person2, relfid))
                             if person2 in self.indi:
@@ -443,11 +483,20 @@ class Tree:
 
     # add family to the family tree
     def add_fam(self, father, mother):
-        if not (father, mother) in self.fam:
+        """ add a family to the family tree
+            :param father: the father fid or None
+            :param mother: the mother fid or None
+        """
+        if (father, mother) not in self.fam:
             self.fam[(father, mother)] = Fam(father, mother, self)
 
     # add a children relationship (possibly incomplete) to the family tree
     def add_trio(self, father, mother, child):
+        """ add a children relationship to the family tree
+            :param father: the father fid or None
+            :param mother: the mother fid or None
+            :param child: the child fid or None
+        """
         if father in self.indi:
             self.indi[father].add_fams((father, mother))
         if mother in self.indi:
@@ -459,35 +508,51 @@ class Tree:
 
     # add parents relationships
     def add_parents(self, fids):
+        """ add parents relationships
+           :param fids: a set of fids
+        """
         parents = set()
-        for fid in (fids & self.indi.keys()):
+        for fid in fids & self.indi.keys():
             for couple in self.indi[fid].parents:
                 parents |= set(couple)
         if parents:
             self.add_indis(parents)
-        for fid in (fids & self.indi.keys()):
+        for fid in fids & self.indi.keys():
             for father, mother in self.indi[fid].parents:
-                if mother in self.indi and father in self.indi or not father and mother in self.indi or not mother and father in self.indi:
+                if (
+                    mother in self.indi
+                    and father in self.indi
+                    or not father
+                    and mother in self.indi
+                    or not mother
+                    and father in self.indi
+                ):
                     self.add_trio(father, mother, fid)
         return set(filter(None, parents))
 
     # add spouse relationships
     def add_spouses(self, fids):
+        """ add spouse relationships
+            :param fids: a set of fid
+        """
+
         async def add(loop, rels):
             futures = set()
             for father, mother, relfid in rels:
                 if (father, mother) in self.fam:
-                    futures.add(loop.run_in_executor(None, self.fam[(father, mother)].add_marriage, relfid))
+                    futures.add(
+                        loop.run_in_executor(None, self.fam[(father, mother)].add_marriage, relfid)
+                    )
             for future in futures:
                 await future
 
         rels = set()
-        for fid in (fids & self.indi.keys()):
+        for fid in fids & self.indi.keys():
             rels |= self.indi[fid].spouses
         loop = asyncio.get_event_loop()
         if rels:
             self.add_indis(set.union(*({father, mother} for father, mother, relfid in rels)))
-            for father, mother, relfid in rels:
+            for father, mother, _ in rels:
                 if father in self.indi and mother in self.indi:
                     self.indi[father].add_fams((father, mother))
                     self.indi[mother].add_fams((father, mother))
@@ -496,27 +561,44 @@ class Tree:
 
     # add children relationships
     def add_children(self, fids):
+        """ add children relationships
+            :param fids: a set of fid
+        """
         rels = set()
-        for fid in (fids & self.indi.keys()):
+        for fid in fids & self.indi.keys():
             rels |= self.indi[fid].children if fid in self.indi else set()
         children = set()
         if rels:
             self.add_indis(set.union(*(set(rel) for rel in rels)))
             for father, mother, child in rels:
-                if child in self.indi and (mother in self.indi and father in self.indi or not father and mother in self.indi or not mother and father in self.indi):
+                if child in self.indi and (
+                    mother in self.indi
+                    and father in self.indi
+                    or not father
+                    and mother in self.indi
+                    or not mother
+                    and father in self.indi
+                ):
                     self.add_trio(father, mother, child)
                     children.add(child)
         return children
 
 
     def reset_num(self):
+        """ reset all GEDCOM identifiers """
         for husb, wife in self.fam:
             self.fam[(husb, wife)].husb_num = self.indi[husb].num if husb else None
             self.fam[(husb, wife)].wife_num = self.indi[wife].num if wife else None
-            self.fam[(husb, wife)].chil_num = set([self.indi[chil].num for chil in self.fam[(husb, wife)].chil_fid])
+            self.fam[(husb, wife)].chil_num = set(
+                self.indi[chil].num for chil in self.fam[(husb, wife)].chil_fid
+            )
         for fid in self.indi:
-            self.indi[fid].famc_num = set([self.fam[(husb, wife)].num for husb, wife in self.indi[fid].famc_fid])
-            self.indi[fid].fams_num = set([self.fam[(husb, wife)].num for husb, wife in self.indi[fid].fams_fid])
+            self.indi[fid].famc_num = set(
+                self.fam[(husb, wife)].num for husb, wife in self.indi[fid].famc_fid
+            )
+            self.indi[fid].fams_num = set(
+                self.fam[(husb, wife)].num for husb, wife in self.indi[fid].fams_fid
+            )
 
     # print GEDCOM file
     def print(self, file=sys.stdout):
@@ -716,7 +798,7 @@ class StartIndis(Treeview):
             messagebox.showinfo(_('Error'), message=_('Invalid FamilySearch ID: ') + fid)
             return
         fs = self.master.master.master.fs
-        data = fs.get_url('/platform/tree/persons/%s.json' % fid)
+        data = fs.get_url('/platform/tree/persons/%s' % fid)
         if data and 'persons' in data:
             if 'names' in data['persons'][0]:
                 for name in data['persons'][0]['names']:
@@ -747,7 +829,7 @@ class Options(Frame):
         self.ancestors.set(4)
         self.descendants = IntVar()
         self.spouses = IntVar()
-        self.ordinances = IntVar()
+        #self.ordinances = IntVar()
         self.contributors = IntVar()
         self.start_indis = StartIndis(self)
         self.fid = StringVar()
@@ -984,14 +1066,14 @@ class Download(Frame):
         self.title.config(text=_('Options'))
         cache.delete('lang')
         cache.add('lang', self.fs.lang)
-        lds_account = self.fs.get_url('/platform/tree/persons/%s/ordinances.json' % self.fs.get_userid()) != 'error'
+        lds_account = self.fs.get_url('/platform/tree/persons/%s/ordinances' % self.fs.fid) != 'error'
         self.options = Options(self.form, lds_account)
         self.info('')
         self.sign_in.destroy()
         self.options.pack()
         self.master.change_lang()
         self.btn_valid.config(command=self.command_in_thread(self.download), state='normal', text=_('Download'))
-        self.options.start_indis.add_indi(self.fs.get_userid())
+        self.options.start_indis.add_indi(self.fs.fid)
         self.update_needed = False
 
     def quit(self):
@@ -1016,28 +1098,33 @@ class Download(Frame):
         self.info(_('Download starting individuals...'))
         self.info_tree = True
         self.tree.add_indis(todo)
-        todo = set(todo)
+
+        # download ancestors
+        #todo = set(todo)
+        todo = set(self.tree.indi.keys())
         done = set()
         for i in range(self.options.ancestors.get()):
             if not todo:
                 break
             done |= todo
-            self.info(_('Download ') + str(i + 1) + _('th generation of ancestors...'))
+            #self.info(_('Download ') + str(i + 1) + _('th generation of ancestors...'))
+            print(_("Downloading %s. of generations of ancestors...") % (i + 1),
+                  file=sys.stderr)
             todo = self.tree.add_parents(todo) - done
 
-        todo = set(self.tree.indi.keys())
-        done = set()
-        for i in range(self.options.descendants.get()):
-            if not todo:
-                break
-            done |= todo
-            self.info(_('Download ') + str(i + 1) + _('th generation of descendants...'))
-            todo = self.tree.add_children(todo) - done
+        #todo = set(self.tree.indi.keys())
+        #done = set()
+        #for i in range(self.options.descendants.get()):
+        #    if not todo:
+        #        break
+        #    done |= todo
+        #    self.info(_('Download ') + str(i + 1) + _('th generation of descendants...'))
+        #    todo = self.tree.add_children(todo) - done
 
-        if self.options.spouses.get():
-            self.info(_('Download spouses and marriage information...'))
-            todo = set(self.tree.indi.keys())
-            self.tree.add_spouses(todo)
+        #if self.options.spouses.get():
+        #    self.info(_('Download spouses and marriage information...'))
+        #    todo = set(self.tree.indi.keys())
+        #    self.tree.add_spouses(todo)
 
         self.tree.reset_num()
         self.btn_valid.config(command=self.save, state='normal', text=_('Save'))

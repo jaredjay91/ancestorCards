@@ -2,24 +2,31 @@ from PIL import Image
 from PIL import ImageFont
 from PIL import ImageDraw
 from PIL import ImageOps
+from fpdf import FPDF
 import os
 import easygui
 import math
-import img2pdf
+#import img2pdf
+
 
 
 def pngToPdf(numpages=1):
 
-    imagesToPrint = ()
+    im_list = []
     for i in range(1,numpages+1):
-        with open("cards/combinedCards"+str(i)+".png", "rb") as img1:
-            f1 = img1.read()
-        with open("cards/combinedCards"+str(i)+"inside.png", "rb") as img2:
-            f2 = img2.read()
-        imagesToPrint = imagesToPrint + (f1,f2,)
+        img1 = Image.open("cards/combinedCards"+str(i)+".png")
+        img2 = Image.open("cards/combinedCards"+str(i)+"inside.png")
+        rgb1 = Image.new('RGB', img1.size, (255, 255, 255))  # white background
+        rgb1.paste(img1, mask=img1.split()[3])
+        rgb2 = Image.new('RGB', img2.size, (255, 255, 255))  # white background
+        rgb2.paste(img2, mask=img2.split()[3])  
+        im_list = im_list + [rgb1,rgb2,]
 
-    with open("PrintableCards.pdf","wb") as outf:
-        outf.write(img2pdf.convert(*imagesToPrint))
+    num_ims = len(im_list)
+    other_im_list = im_list[1:num_ims]
+    pdf_filename = "cards/combinedCards.pdf"
+    im_list[0].save(pdf_filename, "PDF" ,resolution=100.0, save_all=True, append_images=other_im_list)
+
 
 
 def combineCards(file):
