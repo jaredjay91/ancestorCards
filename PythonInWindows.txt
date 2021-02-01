@@ -1,0 +1,457 @@
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>set PATH=C:\Users\Jared\AppData\Local\Programs\Python\Python37;%PATH%
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>set PYTHONPATH=%PYTHONPATH%;C:\Users\Jared\AppData\Local\Programs\Python\Python37\Lib
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python
+Python 3.7.0 (v3.7.0:1bf9cc5093, Jun 27 2018, 04:59:51) [MSC v.1914 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> q
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+NameError: name 'q' is not defined
+>>> ^Z
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+Traceback (most recent call last):
+  File "ancestorCardsGUI.py", line 8, in <module>
+    from diskcache import Cache
+ModuleNotFoundError: No module named 'diskcache'
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python pip install diskcache
+(null): can't open file 'pip': [Errno 2] No such file or directory
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>py -m pip install diskcache
+Collecting diskcache
+  Downloading https://files.pythonhosted.org/packages/24/cd/82de3b0e3c01f5de22dc6d95e0c3bd35a32ca07967092e03c995636443a1/diskcache-3.0.6-py2.py3-none-any.whl
+Installing collected packages: diskcache
+Successfully installed diskcache-3.0.6
+You are using pip version 10.0.1, however version 18.0 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+Traceback (most recent call last):
+  File "ancestorCardsGUI.py", line 17, in <module>
+    from makeCardsHeader import *
+  File "C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\makeCardsHeader.py", line 1, in <module>
+    from PIL import Image
+ModuleNotFoundError: No module named 'PIL'
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>py -m pip install PIL
+Collecting PIL
+  Could not find a version that satisfies the requirement PIL (from versions: )
+No matching distribution found for PIL
+You are using pip version 10.0.1, however version 18.0 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>py -m pip install pil
+Collecting pil
+  Could not find a version that satisfies the requirement pil (from versions: )
+No matching distribution found for pil
+You are using pip version 10.0.1, however version 18.0 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>py -m pip install pillow
+Collecting pillow
+  Downloading https://files.pythonhosted.org/packages/39/a5/4258f77ab40d71bf7d724002a0bb166a902cb4cbdff7b866b1c3d9014547/Pillow-5.2.0-cp37-cp37m-win_amd64.whl (1.6MB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 1.6MB 351kB/s
+Installing collected packages: pillow
+Successfully installed pillow-5.2.0
+You are using pip version 10.0.1, however version 18.0 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+Traceback (most recent call last):
+  File "ancestorCardsGUI.py", line 17, in <module>
+    from makeCardsHeader import *
+  File "C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\makeCardsHeader.py", line 6, in <module>
+    import easygui
+ModuleNotFoundError: No module named 'easygui'
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>py -m pip install easygui
+Collecting easygui
+  Downloading https://files.pythonhosted.org/packages/89/b5/fd22bb3eb36085aeb7781670bbc59cf8b641b1774f77578ec06368865aa3/easygui-0.98.1-py2.py3-none-any.whl (90kB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 92kB 110kB/s
+Installing collected packages: easygui
+Successfully installed easygui-0.98.1
+You are using pip version 10.0.1, however version 18.0 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+You need to install the requests module first
+(run this in your terminal: "python3 -m pip install requests" or "python3 -m pip install --user requests")
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>py -m pip install requests
+Collecting requests
+  Downloading https://files.pythonhosted.org/packages/65/47/7e02164a2a3db50ed6d8a6ab1d6d60b69c4c3fdf57a284257925dfc12bda/requests-2.19.1-py2.py3-none-any.whl (91kB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 92kB 767kB/s
+Collecting certifi>=2017.4.17 (from requests)
+  Downloading https://files.pythonhosted.org/packages/16/1f/50d729c104b21c1042aa51560da6141d1cab476ba7015d92b2111c8db841/certifi-2018.8.13-py2.py3-none-any.whl (146kB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 153kB 1.4MB/s
+Collecting idna<2.8,>=2.5 (from requests)
+  Downloading https://files.pythonhosted.org/packages/4b/2a/0276479a4b3caeb8a8c1af2f8e4355746a97fab05a372e4a2c6a6b876165/idna-2.7-py2.py3-none-any.whl (58kB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 61kB 579kB/s
+Collecting chardet<3.1.0,>=3.0.2 (from requests)
+  Downloading https://files.pythonhosted.org/packages/bc/a9/01ffebfb562e4274b6487b4bb1ddec7ca55ec7510b22e4c51f14098443b8/chardet-3.0.4-py2.py3-none-any.whl (133kB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 143kB 1.3MB/s
+Collecting urllib3<1.24,>=1.21.1 (from requests)
+  Downloading https://files.pythonhosted.org/packages/bd/c9/6fdd990019071a4a32a5e7cb78a1d92c53851ef4f56f62a3486e6a7d8ffb/urllib3-1.23-py2.py3-none-any.whl (133kB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 143kB 178kB/s
+Installing collected packages: certifi, idna, chardet, urllib3, requests
+  The script chardetect.exe is installed in 'C:\Users\Jared\AppData\Local\Programs\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+Successfully installed certifi-2018.8.13 chardet-3.0.4 idna-2.7 requests-2.19.1 urllib3-1.23
+You are using pip version 10.0.1, however version 18.0 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+Exception in thread Thread-5:
+Traceback (most recent call last):
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\Lib\threading.py", line 917, in _bootstrap_inner
+    self.run()
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\Lib\threading.py", line 865, in run
+    self._target(*self._args, **self._kwargs)
+  File "ancestorCardsGUI.py", line 990, in download
+    self.tree.add_indis(todo)
+  File "ancestorCardsGUI.py", line 421, in add_indis
+    loop.run_until_complete(add_datas(loop, data))
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\Lib\asyncio\base_events.py", line 547, in run_until_complete
+    future = tasks.ensure_future(future, loop=self)
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\Lib\asyncio\tasks.py", line 588, in ensure_future
+    raise TypeError('An asyncio.Future, a coroutine or an awaitable is '
+TypeError: An asyncio.Future, a coroutine or an awaitable is required
+
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\Lib\tkinter\__init__.py", line 1702, in __call__
+    return self.func(*args)
+  File "ancestorCardsGUI.py", line 633, in save
+    makeCards(file)
+  File "C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\makeCardsHeader.py", line 120, in makeCards
+    storyfont = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSans.ttf", storyfontsize, encoding="unic")
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\ImageFont.py", line 275, in truetype
+    return FreeTypeFont(font, size, index, encoding, layout_engine)
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\ImageFont.py", line 144, in __init__
+    self.font = core.getfont(font, size, index, encoding, layout_engine=layout_engine)
+OSError: cannot open resource
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\Lib\tkinter\__init__.py", line 1702, in __call__
+    return self.func(*args)
+  File "ancestorCardsGUI.py", line 633, in save
+    makeCards(file)
+  File "C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\makeCardsHeader.py", line 120, in makeCards
+    storyfont = ImageFont.truetype("C:\Windows\Fonts\arial.ttf", storyfontsize, encoding="unic")
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\ImageFont.py", line 275, in truetype
+    return FreeTypeFont(font, size, index, encoding, layout_engine)
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\ImageFont.py", line 144, in __init__
+    self.font = core.getfont(font, size, index, encoding, layout_engine=layout_engine)
+OSError: cannot open resource
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+Exception in Tkinter callback
+Traceback (most recent call last):
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\Lib\tkinter\__init__.py", line 1702, in __call__
+    return self.func(*args)
+  File "ancestorCardsGUI.py", line 633, in save
+    makeCards(file)
+  File "C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\makeCardsHeader.py", line 121, in makeCards
+    fullnamefont = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSans.ttf", 16, encoding="unic")
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\ImageFont.py", line 275, in truetype
+    return FreeTypeFont(font, size, index, encoding, layout_engine)
+  File "C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\ImageFont.py", line 144, in __init__
+    self.font = core.getfont(font, size, index, encoding, layout_engine=layout_engine)
+OSError: cannot open resource
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>python ancestorCardsGUI.py
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>pyinstaller --onefile ancestorCardsGUI.py
+'pyinstaller' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>py -m pip install pyinstaller
+Collecting pyinstaller
+  Downloading https://files.pythonhosted.org/packages/3c/86/909a8c35c5471919b3854c01f43843d9b5aed0e9948b63e560010f7f3429/PyInstaller-3.3.1.tar.gz (3.5MB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 3.5MB 1.1MB/s
+Requirement already satisfied: setuptools in c:\users\jared\appdata\local\programs\python\python37\lib\site-packages (from pyinstaller) (39.0.1)
+Collecting pefile>=2017.8.1 (from pyinstaller)
+  Downloading https://files.pythonhosted.org/packages/ed/cc/157f20038a80b6a9988abc06c11a4959be8305a0d33b6d21a134127092d4/pefile-2018.8.8.tar.gz (62kB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 71kB 728kB/s
+Collecting macholib>=1.8 (from pyinstaller)
+  Downloading https://files.pythonhosted.org/packages/a1/01/845b2df65117dbdabf00c6df879625f4968ede6f512956710f05f4c7663a/macholib-1.10-py2.py3-none-any.whl
+Collecting future (from pyinstaller)
+  Downloading https://files.pythonhosted.org/packages/00/2b/8d082ddfed935f3608cc61140df6dcbf0edea1bc3ab52fb6c29ae3e81e85/future-0.16.0.tar.gz (824kB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 829kB 1.3MB/s
+Collecting pypiwin32 (from pyinstaller)
+  Downloading https://files.pythonhosted.org/packages/d0/1b/2f292bbd742e369a100c91faa0483172cd91a1a422a6692055ac920946c5/pypiwin32-223-py3-none-any.whl
+Collecting altgraph>=0.15 (from macholib>=1.8->pyinstaller)
+  Downloading https://files.pythonhosted.org/packages/0a/cc/646187eac4b797069e2e6b736f14cdef85dbe405c9bfc7803ef36e4f62ef/altgraph-0.16.1-py2.py3-none-any.whl
+Collecting pywin32>=223 (from pypiwin32->pyinstaller)
+  Downloading https://files.pythonhosted.org/packages/f4/fb/ba9e519d90b63090005bcdee900d318d895d475c627dc1bc0f77b27abad0/pywin32-223-cp37-cp37m-win_amd64.whl (8.9MB)
+    100% |¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦¦| 8.9MB 1.0MB/s
+Installing collected packages: future, pefile, altgraph, macholib, pywin32, pypiwin32, pyinstaller
+  Running setup.py install for future ... done
+  Running setup.py install for pefile ... done
+  The scripts macho_dump.exe, macho_find.exe and macho_standalone.exe are installed in 'C:\Users\Jared\AppData\Local\Programs\Python\Python37\Scripts' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
+  Running setup.py install for pyinstaller ... done
+Successfully installed altgraph-0.16.1 future-0.16.0 macholib-1.10 pefile-2018.8.8 pyinstaller-3.3.1 pypiwin32-223 pywin32-223
+You are using pip version 10.0.1, however version 18.0 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' command.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>pyinstaller --onefile ancestorCardsGUI.py
+584 INFO: PyInstaller: 3.3.1
+584 INFO: Python: 3.7.0
+588 INFO: Platform: Windows-10-10.0.14393-SP0
+616 INFO: wrote C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\ancestorCardsGUI.spec
+640 INFO: UPX is not available.
+660 INFO: Extending PYTHONPATH with paths
+['C:\\Users\\Jared\\Desktop\\Ubuntu_Overflow\\ancestorCardsGUI_Windows',
+ 'C:\\Users\\Jared\\Desktop\\Ubuntu_Overflow\\ancestorCardsGUI_Windows']
+668 INFO: checking Analysis
+668 INFO: Building Analysis because out00-Analysis.toc is non existent
+668 INFO: Initializing module dependency graph...
+680 INFO: Initializing module graph hooks...
+684 INFO: Analyzing base_library.zip ...
+23143 INFO: running Analysis out00-Analysis.toc
+23271 INFO: Adding Microsoft.Windows.Common-Controls to dependent assemblies of final executable
+  required by C:\Users\Jared\AppData\Local\Programs\Python\Python37\python.exe
+23511 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python.exe
+23691 WARNING: lib not found: api-ms-win-crt-locale-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python.exe
+23855 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python.exe
+24003 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python.exe
+24159 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python.exe
+24899 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+25091 WARNING: lib not found: api-ms-win-crt-time-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+25263 WARNING: lib not found: api-ms-win-crt-filesystem-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+25439 WARNING: lib not found: api-ms-win-crt-process-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+25595 WARNING: lib not found: api-ms-win-crt-locale-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+25751 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+25891 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+26035 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+26179 WARNING: lib not found: api-ms-win-crt-conio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+26339 WARNING: lib not found: api-ms-win-crt-environment-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+26515 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+26703 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+26911 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\VCRUNTIME140.dll
+27063 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\VCRUNTIME140.dll
+27215 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\VCRUNTIME140.dll
+27359 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\VCRUNTIME140.dll
+27503 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\VCRUNTIME140.dll
+27859 INFO: Caching module hooks...
+27887 INFO: Analyzing C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\ancestorCardsGUI.py
+39383 INFO: Processing pre-safe import module hook   urllib3.packages.six.moves
+46631 INFO: Loading module hooks...
+46635 INFO: Loading module hook "hook-certifi.py"...
+46643 INFO: Loading module hook "hook-encodings.py"...
+46903 INFO: Loading module hook "hook-PIL.Image.py"...
+48571 INFO: Processing pre-find module path hook   distutils
+49311 INFO: Loading module hook "hook-PIL.py"...
+49315 INFO: Excluding import 'PyQt5'
+49323 INFO:   Removing import of PyQt5 from module PIL.ImageQt
+49327 INFO: Excluding import 'tkinter'
+49335 INFO:   Removing import of tkinter from module PIL.ImageTk
+49339 INFO: Excluding import 'PyQt4'
+49347 INFO:   Removing import of PyQt4 from module PIL.ImageQt
+49351 INFO: Import to be excluded not found: 'FixTk'
+49351 INFO: Excluding import 'PySide'
+49359 INFO:   Removing import of PySide from module PIL.ImageQt
+49367 INFO: Loading module hook "hook-PIL.SpiderImagePlugin.py"...
+49371 INFO: Import to be excluded not found: 'FixTk'
+49371 INFO: Excluding import 'tkinter'
+49375 INFO: Loading module hook "hook-pydoc.py"...
+49379 INFO: Loading module hook "hook-requests.py"...
+49399 INFO: Loading module hook "hook-sqlite3.py"...
+49667 INFO: Loading module hook "hook-xml.py"...
+49927 INFO: Loading module hook "hook-_tkinter.py"...
+50127 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_tkinter.pyd
+50327 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_tkinter.pyd
+50491 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_tkinter.pyd
+51210 INFO: checking Tree
+51210 INFO: Building Tree because out00-Tree.toc is non existent
+51210 INFO: Building Tree out00-Tree.toc
+52031 INFO: checking Tree
+52031 INFO: Building Tree because out01-Tree.toc is non existent
+52031 INFO: Building Tree out01-Tree.toc
+52123 INFO: Loading module hook "hook-distutils.py"...
+52383 INFO: Looking for ctypes DLLs
+52395 INFO: Analyzing run-time hooks ...
+52415 INFO: Including run-time hook 'pyi_rth_multiprocessing.py'
+52427 INFO: Including run-time hook 'pyi_rth__tkinter.py'
+52499 INFO: Looking for dynamic libraries
+52679 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_contextvars.pyd
+52871 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_decimal.pyd
+53031 WARNING: lib not found: api-ms-win-crt-locale-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_decimal.pyd
+53191 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_decimal.pyd
+53359 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_decimal.pyd
+53543 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_decimal.pyd
+53719 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_decimal.pyd
+53875 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_decimal.pyd
+54139 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_ctypes.pyd
+54319 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_ctypes.pyd
+54471 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_ctypes.pyd
+54663 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_queue.pyd
+54879 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_multiprocessing.pyd
+55299 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_ssl.pyd
+55607 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_ssl.pyd
+55759 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_ssl.pyd
+55963 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\unicodedata.pyd
+56123 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\unicodedata.pyd
+56275 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\unicodedata.pyd
+56479 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\pyexpat.pyd
+56643 WARNING: lib not found: api-ms-win-crt-environment-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\pyexpat.pyd
+56815 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\pyexpat.pyd
+56963 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\pyexpat.pyd
+57107 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\pyexpat.pyd
+57311 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_hashlib.pyd
+57483 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_bz2.pyd
+57639 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_bz2.pyd
+57783 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_bz2.pyd
+57959 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_bz2.pyd
+58135 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_bz2.pyd
+58371 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_lzma.pyd
+58515 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_lzma.pyd
+58711 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_socket.pyd
+58859 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_socket.pyd
+59111 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\select.pyd
+59327 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingft.cp37-win_amd64.pyd
+59503 WARNING: lib not found: api-ms-win-crt-environment-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingft.cp37-win_amd64.pyd
+59691 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingft.cp37-win_amd64.pyd
+59863 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingft.cp37-win_amd64.pyd
+60015 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingft.cp37-win_amd64.pyd
+60167 WARNING: lib not found: api-ms-win-crt-utility-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingft.cp37-win_amd64.pyd
+60315 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingft.cp37-win_amd64.pyd
+60499 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingtk.cp37-win_amd64.pyd
+60667 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingtk.cp37-win_amd64.pyd
+60819 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingtk.cp37-win_amd64.pyd
+60991 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imagingtk.cp37-win_amd64.pyd
+61443 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_webp.cp37-win_amd64.pyd
+61603 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_webp.cp37-win_amd64.pyd
+61799 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_webp.cp37-win_amd64.pyd
+61963 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_webp.cp37-win_amd64.pyd
+62111 WARNING: lib not found: api-ms-win-crt-utility-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_webp.cp37-win_amd64.pyd
+62391 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+62567 WARNING: lib not found: api-ms-win-crt-filesystem-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+62747 WARNING: lib not found: api-ms-win-crt-environment-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+62927 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+63075 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+63239 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+63387 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+63531 WARNING: lib not found: api-ms-win-crt-utility-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+63679 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PIL\_imaging.cp37-win_amd64.pyd
+63875 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_overlapped.pyd
+64055 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_overlapped.pyd
+64627 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_asyncio.pyd
+64831 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_sqlite3.pyd
+64991 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_sqlite3.pyd
+65143 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_sqlite3.pyd
+65351 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_tkinter.pyd
+65531 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_tkinter.pyd
+65695 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\_tkinter.pyd
+65971 WARNING: lib not found: api-ms-win-crt-time-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libssl-1_1-x64.dll
+66143 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libssl-1_1-x64.dll
+66295 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libssl-1_1-x64.dll
+66451 WARNING: lib not found: api-ms-win-crt-utility-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libssl-1_1-x64.dll
+69591 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+69747 WARNING: lib not found: api-ms-win-crt-time-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+69899 WARNING: lib not found: api-ms-win-crt-filesystem-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+70071 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+70263 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+70459 WARNING: lib not found: api-ms-win-crt-environment-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+70655 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+70839 WARNING: lib not found: api-ms-win-crt-utility-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+71011 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\libcrypto-1_1-x64.dll
+71231 WARNING: lib not found: api-ms-win-crt-time-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\sqlite3.dll
+71387 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\sqlite3.dll
+71539 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\sqlite3.dll
+71719 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\sqlite3.dll
+71959 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\sqlite3.dll
+72139 WARNING: lib not found: api-ms-win-crt-utility-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\sqlite3.dll
+72427 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tk86t.dll
+72575 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tk86t.dll
+72731 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tk86t.dll
+72883 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tk86t.dll
+73031 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tk86t.dll
+73183 WARNING: lib not found: api-ms-win-crt-utility-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tk86t.dll
+73367 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tk86t.dll
+73551 WARNING: lib not found: api-ms-win-crt-time-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tk86t.dll
+74055 WARNING: lib not found: api-ms-win-crt-stdio-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+74207 WARNING: lib not found: api-ms-win-crt-time-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+74387 WARNING: lib not found: api-ms-win-crt-math-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+74539 WARNING: lib not found: api-ms-win-crt-runtime-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+74687 WARNING: lib not found: api-ms-win-crt-heap-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+74891 WARNING: lib not found: api-ms-win-crt-environment-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+75055 WARNING: lib not found: api-ms-win-crt-string-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+75223 WARNING: lib not found: api-ms-win-crt-convert-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+75379 WARNING: lib not found: api-ms-win-crt-utility-l1-1-0.dll dependency of C:\Users\Jared\AppData\Local\Programs\Python\Python37\DLLs\tcl86t.dll
+75383 INFO: Looking for eggs
+75387 INFO: Using Python library C:\Users\Jared\AppData\Local\Programs\Python\Python37\python37.dll
+75387 INFO: Found binding redirects:
+[]
+75427 INFO: Warnings written to C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\build\ancestorCardsGUI\warnancestorCardsGUI.txt
+75871 INFO: Graph cross-reference written to C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\build\ancestorCardsGUI\xref-ancestorCardsGUI.html
+76979 INFO: checking PYZ
+76983 INFO: Building PYZ because out00-PYZ.toc is non existent
+76987 INFO: Building PYZ (ZlibArchive) C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\build\ancestorCardsGUI\out00-PYZ.pyz
+81535 INFO: Building PYZ (ZlibArchive) C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\build\ancestorCardsGUI\out00-PYZ.pyz completed successfully.
+81655 INFO: checking PKG
+81655 INFO: Building PKG because out00-PKG.toc is non existent
+81659 INFO: Building PKG (CArchive) out00-PKG.pkg
+81839 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\python37.dll
+81847 INFO: Updating resource type 24 name 2 language 1033
+82023 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_contextvars.pyd
+82023 INFO: Updating resource type 24 name 2 language 1033
+82075 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_decimal.pyd
+82079 INFO: Updating resource type 24 name 2 language 1033
+82123 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_ctypes.pyd
+82123 INFO: Updating resource type 24 name 2 language 1033
+82171 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_queue.pyd
+82175 INFO: Updating resource type 24 name 2 language 1033
+82203 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_multiprocessing.pyd
+82203 INFO: Updating resource type 24 name 2 language 1033
+82239 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_ssl.pyd
+82243 INFO: Updating resource type 24 name 2 language 1033
+82279 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\unicodedata.pyd
+82279 INFO: Updating resource type 24 name 2 language 1033
+82355 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\pyexpat.pyd
+82359 INFO: Updating resource type 24 name 2 language 1033
+82423 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_hashlib.pyd
+82423 INFO: Updating resource type 24 name 2 language 1033
+82479 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_bz2.pyd
+82479 INFO: Updating resource type 24 name 2 language 1033
+82543 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_lzma.pyd
+82547 INFO: Updating resource type 24 name 2 language 1033
+82587 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_socket.pyd
+82587 INFO: Updating resource type 24 name 2 language 1033
+82619 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\select.pyd
+82623 INFO: Updating resource type 24 name 2 language 1033
+82719 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\pil._imagingft.pyd
+82723 INFO: Updating resource type 24 name 2 language 1033
+82795 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\pil._imagingtk.pyd
+82799 INFO: Updating resource type 24 name 2 language 1033
+82843 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\pil._webp.pyd
+82847 INFO: Updating resource type 24 name 2 language 1033
+82971 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\pil._imaging.pyd
+82975 INFO: Updating resource type 24 name 2 language 1033
+83019 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_overlapped.pyd
+83019 INFO: Updating resource type 24 name 2 language 1033
+83071 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_asyncio.pyd
+83071 INFO: Updating resource type 24 name 2 language 1033
+83119 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_sqlite3.pyd
+83123 INFO: Updating resource type 24 name 2 language 1033
+83147 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\_tkinter.pyd
+83147 INFO: Updating resource type 24 name 2 language 1033
+83363 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\sqlite3.dll
+83367 INFO: Updating resource type 24 name 2 language 1033
+83539 INFO: Updating manifest in C:\Users\Jared\AppData\Roaming\pyinstaller\bincache00_py37_64bit\tk86t.dll
+83543 INFO: Updating resource type 24 name 1 language 1033
+94344 INFO: Building PKG (CArchive) out00-PKG.pkg completed successfully.
+94524 INFO: Bootloader C:\Users\Jared\AppData\Local\Programs\Python\Python37\lib\site-packages\PyInstaller\bootloader\Windows-64bit\run.exe
+94528 INFO: checking EXE
+94532 INFO: Building EXE because out00-EXE.toc is non existent
+94532 INFO: Building EXE from out00-EXE.toc
+94536 INFO: Appending archive to EXE C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows\dist\ancestorCardsGUI.exe
+94596 INFO: Building EXE from out00-EXE.toc completed successfully.
+
+C:\Users\Jared\Desktop\Ubuntu_Overflow\ancestorCardsGUI_Windows>
